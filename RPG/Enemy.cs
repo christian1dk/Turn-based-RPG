@@ -9,5 +9,11 @@ namespace RPG
     abstract class Enemy : Charater
     {
         private float xpReward;
+
+        public float XpReward
+        {
+            get { return xpReward; }
+            set { xpReward = value; }
+        }
     }
 }
