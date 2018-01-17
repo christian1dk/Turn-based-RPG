@@ -1,0 +1,14 @@
+C:\Users\chris\Desktop\RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
+C:\Users\chris\Desktop\RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
+C:\Users\chris\Desktop\RPG\RPG\bin\Debug\RPG.exe.config
+C:\Users\chris\Desktop\RPG\RPG\bin\Debug\RPG.exe
+C:\Users\chris\Desktop\RPG\RPG\bin\Debug\RPG.pdb
+C:\Users\chris\Desktop\RPG\RPG\obj\Debug\RPG.exe
+C:\Users\chris\Desktop\RPG\RPG\obj\Debug\RPG.pdb
+F:\+\RPG\RPG\bin\Debug\RPG.exe.config
+F:\+\RPG\RPG\bin\Debug\RPG.exe
+F:\+\RPG\RPG\bin\Debug\RPG.pdb
+F:\+\RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
+F:\+\RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
+F:\+\RPG\RPG\obj\Debug\RPG.exe
+F:\+\RPG\RPG\obj\Debug\RPG.pdb

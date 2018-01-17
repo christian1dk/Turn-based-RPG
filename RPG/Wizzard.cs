@@ -26,6 +26,38 @@ namespace RPG
             return (Health > 0);
         }
 
+        public override bool LevelUpCheck()
+        {
+            for(int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp >= LevelUp[i])
+                {
+                    if (Level < i + 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public override void LevelUpStats()
+        {
+            Level++;
+            MaxHealth *= 1.2f;
+            Health = MaxHealth;
+            Attack *= 1.2f;
+            Defense *= 1.2f;
+            Armor *= 1.2f;
+        }
+
+        public override void AttackDamage(Enemy enemy)
+        {
+            Damage = Random.Next((int)(Attack-(10*(0.1*Level+1))), (int)(Attack + (10 * (0.1 * Level + 1))));
+            Console.WriteLine("Player Attack");
+            enemy.Defend(Damage);
+        }
+
         public override float AttackDamage(float a, int b)
         {
             throw new NotImplementedException();
@@ -41,22 +73,17 @@ namespace RPG
             throw new NotImplementedException();
         }
 
+        public override void Defend(float damage)
+        {
+            Health -= damage;
+        }
+
         public override float Defend(float a, int b)
         {
             throw new NotImplementedException();
         }
 
         public override float Defend(float a, int b, AttackType c)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool LevelUpCheck()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void LevelUpStats()
         {
             throw new NotImplementedException();
         }

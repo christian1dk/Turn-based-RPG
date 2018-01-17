@@ -90,6 +90,7 @@ namespace RPG
         public abstract bool Alive();
         public abstract float AttackDamage(float a, int b);
         public abstract float AttackDamage(float a, int b, AttackType c);
+        public abstract void Defend(float a);
         public abstract float Defend(float a, int b);
         public abstract float Defend(float a, int b, AttackType c);
         public abstract bool CriticalHitChance();
