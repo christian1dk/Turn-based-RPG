@@ -50,5 +50,15 @@ namespace RPG
         {
             throw new NotImplementedException();
         }
+
+        public override bool LevelUpCheck()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void LevelUpStats()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
