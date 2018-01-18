@@ -46,6 +46,7 @@
     <Compile Include="Charater.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Goblin.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />

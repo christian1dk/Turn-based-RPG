@@ -15,7 +15,5 @@ namespace RPG
             get { return xpReward; }
             set { xpReward = value; }
         }
-
-        public abstract void AttackDamage(Hero hero);
     }
 }

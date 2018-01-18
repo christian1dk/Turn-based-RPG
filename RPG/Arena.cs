@@ -36,21 +36,21 @@ namespace RPG
 
             if (difficulty == 1)
             {
-                Goblin goblin1 = new Goblin(level);
+                Goblin goblin1 = new Goblin(level, difficulty);
                 enemys.Add(goblin1);
             }
             else if (difficulty == 2)
             {
-                Goblin goblin1 = new Goblin(level);
-                Goblin goblin2 = new Goblin(level);
+                Goblin goblin1 = new Goblin(level, difficulty);
+                Goblin goblin2 = new Goblin(level, difficulty);
                 enemys.Add(goblin1);
                 enemys.Add(goblin2);
             }
             else if (difficulty == 3)
             {
-                Goblin goblin1 = new Goblin(level);
-                Goblin goblin2 = new Goblin(level);
-                Goblin goblin3 = new Goblin(level);
+                Goblin goblin1 = new Goblin(level, difficulty);
+                Goblin goblin2 = new Goblin(level, difficulty);
+                Goblin goblin3 = new Goblin(level, difficulty);
                 enemys.Add(goblin1);
                 enemys.Add(goblin2);
                 enemys.Add(goblin3);
@@ -61,14 +61,7 @@ namespace RPG
 
         public void Attack(Enemy enemy)
         {
-            if (hero.Alive())
-            {
-                hero.AttackDamage(enemy);
-            }
-            else
-            {
-                complete = true;
-            }
+            hero.AttackDamage(enemy);
         }
 
         private void Render()
@@ -90,7 +83,7 @@ namespace RPG
 
         public void Run()
         {
-            while (complete == false)
+            while (complete == false && hero.Alive())
             {
                 Thread.Sleep(1000);
                 Render();
@@ -102,8 +95,15 @@ namespace RPG
                 }
                 while (!enemys[enemysnr].Alive()); //We will only attack Enemy there is alive.
 
-                Attack(enemys[enemysnr]);
-                Console.WriteLine("enemy" + enemysnr);
+                if (hero.Alive())
+                {
+                    Attack(enemys[enemysnr]);
+                }
+                else
+                {
+                    complete = true;
+                    break;
+                }
 
 
                 Thread.Sleep(1000);
@@ -121,13 +121,15 @@ namespace RPG
                         enemyAlive--;
                         if (enemyAlive <= 0)
                         {
-                            complete = true;
-                            Console.WriteLine("Done");
-
-                            /*if (wizzard.LevelUpCheck())
+                            foreach (Enemy deadEnemy in enemys)
                             {
-                                wizzard.LevelUpStats();
-                            }*/
+                                hero.Xp += deadEnemy.XpReward;
+                                if (hero.LevelUpCheck())
+                                {
+                                    hero.LevelUpStats();
+                                }
+                            }
+                            complete = true;
                             break;
                         }
                     }

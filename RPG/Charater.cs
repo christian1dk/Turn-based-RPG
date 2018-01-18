@@ -17,6 +17,9 @@ namespace RPG
         private float armor;
         private int level;
         private AttackType type;
+        private float hit;
+        private int number;
+        private int criticalHitChance;
         protected int stunTurnes;
 
         Random random = new Random();
@@ -69,6 +72,24 @@ namespace RPG
             set { level = value; }
         }
 
+        public float Hit
+        {
+            get { return hit; }
+            set { hit = value; }
+        }
+
+        public int CriticalHitChance
+        {
+            get { return criticalHitChance; }
+            set { criticalHitChance = value; }
+        }
+
+        public int Number
+        {
+            get { return number; }
+            set { number = value; }
+        }
+
         public int StunTurnes
         {
             get { return stunTurnes; }
@@ -88,12 +109,11 @@ namespace RPG
         }
 
         public abstract bool Alive();
-        public abstract float AttackDamage(float a, int b);
-        public abstract float AttackDamage(float a, int b, AttackType c);
-        public abstract void Defend(float a);
-        public abstract float Defend(float a, int b);
-        public abstract float Defend(float a, int b, AttackType c);
-        public abstract bool CriticalHitChance();
+        public abstract void AttackDamage(Charater charater);
+        public abstract void AttackDamage(Charater charater, int a, AttackType c);
+        public abstract void Defend(float damage);
+        public abstract float Defend(float damage, int turns, AttackType c);
+        public abstract bool CriticalHit();
     }
 
     enum AttackType { Fire, Ice}

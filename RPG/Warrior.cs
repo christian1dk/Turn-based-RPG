@@ -13,11 +13,12 @@ namespace RPG
         {
             this.Name = name;
             this.Type = type;
-            this.MaxHealth = 5000;
+            this.MaxHealth = 200;
             this.Health = MaxHealth;
-            this.Attack = 200;
-            this.Defense = 50;
+            this.Attack = 10;
             this.Armor = 50;
+            this.Defense = 50;
+            this.CriticalHitChance = 5;
             this.Level = 1;
             this.Xp = 0;
         }
@@ -29,11 +30,11 @@ namespace RPG
 
         public override bool LevelUpCheck()
         {
-            for (int i = 0; i <= LevelUp.Length; i++)
+            for (int i = 0; i < LevelUp.Length; i++)
             {
                 if (Xp >= LevelUp[i])
                 {
-                    if (Level < i + 1)
+                    if (Level < LevelUp[i + 1])
                     {
                         return true;
                     }
@@ -83,39 +84,40 @@ namespace RPG
             Armor *= 1.2f;
         }
 
-        public override void AttackDamage(Enemy enemy)
+        public override void AttackDamage(Charater enemy)
         {
-            Damage = Random.Next((int)(Attack - (10 * (0.1 * Level + 1))), (int)(Attack + (10 * (0.1 * Level + 1))));
-            Console.WriteLine("Player Attack");
+            Damage = Random.Next((int)(Attack - (5 * (0.1 * Level + 1))), (int)(Attack + (5 * (0.1 * Level + 1))));
+            Console.WriteLine("Warrior Attack with {0} damage", Damage);
             enemy.Defend(Damage);
         }
 
-        public override float AttackDamage(float a, int b)
+        public override void AttackDamage(Charater enemy, int b, AttackType c)
         {
             throw new NotImplementedException();
         }
 
-        public override float AttackDamage(float a, int b, AttackType c)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool CriticalHitChance()
+        public override bool CriticalHit()
         {
             throw new NotImplementedException();
         }
 
         public override void Defend(float damage)
         {
-            Health -= damage;
+            Hit = Random.Next((int)(damage - (Defense + ((0.1 * Level))) / 2), (int)(damage - (Defense - ((0.1 * Level))) / 2));
+            if (Hit > 0)
+            {
+                Health -= Hit;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Warrior was hit and lost {0} health", Hit);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.WriteLine("Warrior blocks the attack");
+            }
         }
 
-        public override float Defend(float a, int b)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override float Defend(float a, int b, AttackType c)
+        public override float Defend(float damagea, int turns, AttackType c)
         {
             throw new NotImplementedException();
         }

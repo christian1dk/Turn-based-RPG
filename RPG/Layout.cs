@@ -12,10 +12,17 @@ namespace RPG
 
         public string PlayerInfo(float health, float maxHealth, bool alive, int level, float xp, int lastLevelUp, int nextLevelUp)
         {
+            if (alive)
+            { 
                 Console.WriteLine("-------------- Player -------------- ");
-                Console.WriteLine("Health: " + health + "/" + maxHealth);
-                Console.WriteLine("Level: " + level + XpBar(xp, lastLevelUp, nextLevelUp));
-            
+                Console.WriteLine("Health: " + (int)health + "/" + (int)maxHealth);
+            }
+            else
+            {
+                Console.WriteLine("-------------- Dead -------------- ");
+            }
+            Console.WriteLine("Level: " + level + XpBar(xp, lastLevelUp, nextLevelUp));
+
 
             return s;
         }

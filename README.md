@@ -25,17 +25,17 @@ Player Option here can we:
 ## Charater Class
 * Contains all that Enemy & Hero have has in common
 
-## Enemy Class : Charater Class
+### Enemy Class : Charater Class
 *
 
-### Goblin Class : Enemy Class
+#### Goblin Class : Enemy Class
 
-## Hero Class : Charater Class
+### Hero Class : Charater Class
 *
 
-### Wizzard Class : Hero Class
+#### Wizzard Class : Hero Class
 
-### Warrior Class : Hero Class
+#### Warrior Class : Hero Class
 
 ## Layout Class
 * Create HP bar for Hero & Enemies
