@@ -11,8 +11,7 @@ namespace RPG
     {
         private int difficulty;
         private int level;
-        private Wizzard wizzard;
-        private Warrior warrior;
+        private Hero hero;
         private Layout layout = new Layout();
         private bool complete = false;
         private List<Enemy> enemys = new List<Enemy>();
@@ -20,16 +19,9 @@ namespace RPG
         int enemyAlive;
         int enemysnr;
 
-        public Arena(Wizzard wizzard, int difficulty)
+        public Arena(Hero hero)
         {
-            this.wizzard = wizzard;
-            this.difficulty = difficulty;
-        }
-
-        public Arena(Warrior warrior, int difficulty)
-        {
-            this.warrior = warrior;
-            this.difficulty = difficulty;
+            this.hero = hero;
         }
 
         public int Difficulty
@@ -40,14 +32,7 @@ namespace RPG
 
         public void Setup(int difficulty)
         {
-            if (warrior != null)
-            {
-                level = warrior.Level;
-            }
-            else if (wizzard != null)
-            {
-                level = wizzard.Level;
-            }
+            level = hero.Level;
 
             if (difficulty == 1)
             {
@@ -76,27 +61,13 @@ namespace RPG
 
         public void Attack(Enemy enemy)
         {
-            if (warrior != null)
+            if (hero.Alive())
             {
-                if(warrior.Alive())
-                {
-                    warrior.AttackDamage(enemy);
-                }
-                else
-                {
-                    complete = true;
-                }
+                hero.AttackDamage(enemy);
             }
-            else if (wizzard != null)
+            else
             {
-                if (wizzard.Alive())
-                {
-                    wizzard.AttackDamage(enemy);
-                }
-                else
-                {
-                    complete = true;
-                }
+                complete = true;
             }
         }
 
@@ -106,14 +77,7 @@ namespace RPG
             Console.WriteLine("-------------- Arena -------------- ");
             Console.WriteLine("Health Bar: \n");
 
-            if (warrior != null)
-            {
-                Console.WriteLine("{0} {1}", warrior.Name, layout.HealthBar(warrior.Health, warrior.MaxHealth, warrior.Alive()));
-            }
-            else if (wizzard != null)
-            {
-                Console.WriteLine("{0} {1}", wizzard.Name, layout.HealthBar(wizzard.Health, wizzard.MaxHealth, wizzard.Alive()));
-            }
+            Console.WriteLine("{0} {1}", hero.Name, layout.HealthBar(hero.Health, hero.MaxHealth, hero.Alive()));
 
             foreach (Enemy enemy in enemys)
             {
@@ -150,14 +114,7 @@ namespace RPG
                 {
                     if (enemy.Alive())
                     {
-                        if (warrior != null)
-                        {
-                            enemy.AttackDamage(warrior);
-                        }
-                        else if (wizzard != null)
-                        {
-                            enemy.AttackDamage(wizzard);
-                        }
+                        enemy.AttackDamage(hero);
                     }
                     else
                     {
@@ -166,6 +123,11 @@ namespace RPG
                         {
                             complete = true;
                             Console.WriteLine("Done");
+
+                            /*if (wizzard.LevelUpCheck())
+                            {
+                                wizzard.LevelUpStats();
+                            }*/
                             break;
                         }
                     }

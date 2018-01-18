@@ -18,7 +18,7 @@ namespace RPG
             this.Defense = 50;
             this.Armor = 50;
             this.Level = 1;
-            this.Xp = 4000;
+            this.Xp = 10;
         }
 
         public override bool Alive()
@@ -39,6 +39,37 @@ namespace RPG
                 }
             }
             return false;
+        }
+
+        public override int NextLevelUp()
+        {
+            for (int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp <= LevelUp[i])
+                {
+                    return LevelUp[i];
+                }
+            }
+            return 0;
+        }
+
+        public override int LastLevelUp()
+        {
+            for (int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp <= LevelUp[i])
+                {
+                    try
+                    {
+                        return LevelUp[i - 1];
+                    }
+                    catch
+                    {
+                        return 0;
+                    }
+                }
+            }
+            return 0;
         }
 
         public override void LevelUpStats()

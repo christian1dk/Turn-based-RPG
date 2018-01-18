@@ -8,9 +8,39 @@ namespace RPG
 {
     class Layout
     {
+        string s;
+
+        public string PlayerInfo(float health, float maxHealth, bool alive, int level, float xp, int lastLevelUp, int nextLevelUp)
+        {
+                Console.WriteLine("-------------- Player -------------- ");
+                Console.WriteLine("Health: " + health + "/" + maxHealth);
+                Console.WriteLine("Level: " + level + XpBar(xp, lastLevelUp, nextLevelUp));
+            
+
+            return s;
+        }
+
+        public string XpBar(float xp, int lastLevelUp, int nextLevelUp)
+        {
+            s = " Xp:[";
+            int total = 20; //max # shown
+            float count = (float)Math.Round(((xp - lastLevelUp) / (nextLevelUp - lastLevelUp)) * total); //Get the number of # to show
+            if ((count == 0))
+            {
+                count = 1; //show at least one # if alive
+            }
+            for (int i = 0; i < count; i++)
+            {
+                s += "#";
+            }
+            s = s.PadRight(total + (int)((total - count) / 3)); //When we remove an #, the space between [ & ] will stay the same.  
+            s += "]";
+
+            return s;
+        }
+
         public string HealthBar(float health, float maxHealth, bool alive)
         {
-            string s;
             if (alive)
             {
                 s = "[";
@@ -31,7 +61,6 @@ namespace RPG
             {
                 s = "[        Dead        ]";
             }
-
 
             return s;
         }

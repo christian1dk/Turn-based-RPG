@@ -26,6 +26,8 @@ namespace RPG
         public abstract void LevelUpStats();
 
         public abstract bool LevelUpCheck();
+        public abstract int NextLevelUp();
+        public abstract int LastLevelUp();
         public abstract void AttackDamage(Enemy enemy);
 
     }

@@ -9,26 +9,85 @@ namespace RPG
     class Warrior : Hero
     {
 
-        public Warrior(string name)
+        public Warrior(string name, AttackType type)
         {
             this.Name = name;
-            this.MaxHealth = 50;
+            this.Type = type;
+            this.MaxHealth = 5000;
             this.Health = MaxHealth;
             this.Attack = 200;
             this.Defense = 50;
             this.Armor = 50;
             this.Level = 1;
-            this.Xp = 4000;
+            this.Xp = 0;
         }
 
         public override bool Alive()
         {
-            throw new NotImplementedException();
+            return (Health > 0);
+        }
+
+        public override bool LevelUpCheck()
+        {
+            for (int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp >= LevelUp[i])
+                {
+                    if (Level < i + 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public override int NextLevelUp()
+        {
+            for (int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp <= LevelUp[i])
+                {
+                    return LevelUp[i];
+                }
+            }
+            return 0;
+        }
+
+        public override int LastLevelUp()
+        {
+            for (int i = 0; i <= LevelUp.Length; i++)
+            {
+                if (Xp <= LevelUp[i])
+                {
+                    try
+                    {
+                        return LevelUp[i - 1];
+                    }
+                    catch
+                    {
+                        return 0;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public override void LevelUpStats()
+        {
+            Level++;
+            MaxHealth *= 1.2f;
+            Health = MaxHealth;
+            Attack *= 1.2f;
+            Defense *= 1.2f;
+            Armor *= 1.2f;
         }
 
         public override void AttackDamage(Enemy enemy)
         {
-            throw new NotImplementedException();
+            Damage = Random.Next((int)(Attack - (10 * (0.1 * Level + 1))), (int)(Attack + (10 * (0.1 * Level + 1))));
+            Console.WriteLine("Player Attack");
+            enemy.Defend(Damage);
         }
 
         public override float AttackDamage(float a, int b)
@@ -46,27 +105,17 @@ namespace RPG
             throw new NotImplementedException();
         }
 
+        public override void Defend(float damage)
+        {
+            Health -= damage;
+        }
+
         public override float Defend(float a, int b)
         {
             throw new NotImplementedException();
         }
 
-        public override void Defend(float a)
-        {
-            throw new NotImplementedException();
-        }
-
         public override float Defend(float a, int b, AttackType c)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool LevelUpCheck()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void LevelUpStats()
         {
             throw new NotImplementedException();
         }
