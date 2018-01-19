@@ -15,5 +15,6 @@ namespace RPG
             get { return xpReward; }
             set { xpReward = value; }
         }
+        public abstract AttackType SkillSelect();
     }
 }

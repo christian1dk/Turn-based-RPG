@@ -19,10 +19,10 @@ C:\Users\chris\Desktop\RPG\RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.
 C:\Users\chris\Desktop\RPG\RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
 C:\Users\chris\Desktop\RPG\RPG\RPG\obj\Debug\RPG.exe
 C:\Users\chris\Desktop\RPG\RPG\RPG\obj\Debug\RPG.pdb
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\obj\Debug\RPG.exe
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\obj\Debug\RPG.pdb
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\bin\Debug\RPG.exe.config
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\bin\Debug\RPG.exe
-C:\Users\chris\Desktop\RPG\RPG 4\RPG\bin\Debug\RPG.pdb
+G:\+\RPG\RPG\bin\Debug\RPG.exe.config
+G:\+\RPG\RPG\bin\Debug\RPG.exe
+G:\+\RPG\RPG\bin\Debug\RPG.pdb
+G:\+\RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
+G:\+\RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
+G:\+\RPG\RPG\obj\Debug\RPG.exe
+G:\+\RPG\RPG\obj\Debug\RPG.pdb

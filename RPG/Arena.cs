@@ -11,14 +11,18 @@ namespace RPG
     {
         private int difficulty;
         private int level;
+        private int enemyAlive;
+        private int enemiesnr;
+        private bool complete = false;
+        private List<Enemy> enemies = new List<Enemy>();
         private Hero hero;
         private Layout layout = new Layout();
-        private bool complete = false;
-        private List<Enemy> enemys = new List<Enemy>();
-        Random random = new Random();
-        int enemyAlive;
-        int enemysnr;
+        private Random random = new Random();
 
+        /// <summary>
+        /// Hero Add to Arena
+        /// </summary>
+        /// <param name="hero"></param>
         public Arena(Hero hero)
         {
             this.hero = hero;
@@ -30,6 +34,10 @@ namespace RPG
             set { difficulty = value; }
         }
 
+        /// <summary>
+        /// Creating the enemies
+        /// </summary>
+        /// <param name="difficulty">How difficulty the battle should be</param>
         public void Setup(int difficulty)
         {
             level = hero.Level;
@@ -37,67 +45,48 @@ namespace RPG
             if (difficulty == 1)
             {
                 Goblin goblin1 = new Goblin(level, difficulty);
-                enemys.Add(goblin1);
+                enemies.Add(goblin1);
             }
             else if (difficulty == 2)
             {
                 Goblin goblin1 = new Goblin(level, difficulty);
                 Goblin goblin2 = new Goblin(level, difficulty);
-                enemys.Add(goblin1);
-                enemys.Add(goblin2);
+                enemies.Add(goblin1);
+                enemies.Add(goblin2);
             }
             else if (difficulty == 3)
             {
                 Goblin goblin1 = new Goblin(level, difficulty);
                 Goblin goblin2 = new Goblin(level, difficulty);
                 Goblin goblin3 = new Goblin(level, difficulty);
-                enemys.Add(goblin1);
-                enemys.Add(goblin2);
-                enemys.Add(goblin3);
+                enemies.Add(goblin1);
+                enemies.Add(goblin2);
+                enemies.Add(goblin3);
             }
 
-            enemyAlive = enemys.Count();
+            enemyAlive = enemies.Count();
         }
 
-        public void Attack(Enemy enemy)
-        {
-            hero.AttackDamage(enemy);
-        }
-
-        private void Render()
-        {
-            Console.Clear();
-            Console.WriteLine("-------------- Arena -------------- ");
-            Console.WriteLine("Health Bar: \n");
-
-            Console.WriteLine("{0} {1}", hero.Name, layout.HealthBar(hero.Health, hero.MaxHealth, hero.Alive()));
-
-            foreach (Enemy enemy in enemys)
-            {
-                Console.WriteLine("{0} {1}", enemy.Name, layout.HealthBar(enemy.Health, enemy.MaxHealth, enemy.Alive()));
-                //Console.WriteLine("{0} {1}", enemy.Name, enemy.HealthBar());
-            }
-
-            Console.WriteLine();
-        }
-
+        /// <summary>
+        /// Run the battle
+        /// </summary>
         public void Run()
         {
             while (complete == false && hero.Alive())
             {
                 Thread.Sleep(1000);
-                Render();
+                layout.Arena(hero, enemies);
 
                 //We need to run random before we check alive status therefore do-while & not while.
                 do
                 {
-                    enemysnr = random.Next(0, enemys.Count());
+                    enemiesnr = random.Next(0, enemies.Count());
                 }
-                while (!enemys[enemysnr].Alive()); //We will only attack Enemy there is alive.
+                while (!enemies[enemiesnr].Alive()); //We will only attack Enemy there is alive.
 
                 if (hero.Alive())
                 {
-                    Attack(enemys[enemysnr]);
+                    hero.Action(enemies[enemiesnr]);
                 }
                 else
                 {
@@ -107,21 +96,21 @@ namespace RPG
 
 
                 Thread.Sleep(1000);
-                Render();
-                enemyAlive = enemys.Count();
+                layout.Arena(hero, enemies);
+                enemyAlive = enemies.Count();
 
-                foreach (Enemy enemy in enemys)
+                foreach (Enemy enemy in enemies)
                 {
                     if (enemy.Alive())
                     {
-                        enemy.AttackDamage(hero);
+                        enemy.Action(hero);
                     }
                     else
                     {
                         enemyAlive--;
                         if (enemyAlive <= 0)
                         {
-                            foreach (Enemy deadEnemy in enemys)
+                            foreach (Enemy deadEnemy in enemies)
                             {
                                 hero.Xp += deadEnemy.XpReward;
                                 if (hero.LevelUpCheck())

@@ -15,14 +15,14 @@ namespace RPG
         private float attack;
         private float defense;
         private float armor;
-        private int level;
-        private AttackType type;
         private float hit;
+        private int level;
         private int number;
-        private int criticalHitChance;
-        protected int stunTurnes;
-
-        Random random = new Random();
+        private int chance;
+        private int infectedTurns;
+        private int stunTurnes;
+        private AttackType skill;
+        private Random random = new Random();
 
         public string Name
         {
@@ -78,10 +78,10 @@ namespace RPG
             set { hit = value; }
         }
 
-        public int CriticalHitChance
+        public int Chance
         {
-            get { return criticalHitChance; }
-            set { criticalHitChance = value; }
+            get { return chance; }
+            set { chance = value; }
         }
 
         public int Number
@@ -90,16 +90,22 @@ namespace RPG
             set { number = value; }
         }
 
+        public int InfectedTurns
+        {
+            get { return infectedTurns; }
+            set { infectedTurns = value; }
+        }
+
         public int StunTurnes
         {
             get { return stunTurnes; }
             set { stunTurnes = value; }
         }
 
-        public AttackType Type
+        public AttackType Skill
         {
-            get { return type; }
-            set { type = value; }
+            get { return skill; }
+            set { skill = value; }
         }
 
         public Random Random
@@ -109,11 +115,13 @@ namespace RPG
         }
 
         public abstract bool Alive();
+        public abstract void Action(Charater charater);
         public abstract void AttackDamage(Charater charater);
-        public abstract void AttackDamage(Charater charater, int a, AttackType c);
+        public abstract void AttackDamage(Charater charater, float damage, int turns, AttackType skill);
         public abstract void Defend(float damage);
-        public abstract float Defend(float damage, int turns, AttackType c);
-        public abstract bool CriticalHit();
+        public abstract void Defend(float damage, int turns, AttackType skill);
+        public abstract bool ChanceCheck();
+        public abstract int TurnsNumber();
     }
 
     enum AttackType { Fire, Ice}

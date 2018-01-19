@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    class Warrior : Hero
+    class Wizard : Hero
     {
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="name">Warrior Name</param>
-        /// <param name="type">Warrior Skill</param>
-        public Warrior(string name, AttackType skill)
+        /// <param name="name">Wizzard Name</param>
+        /// <param name="type">Wizzard Skill</param>
+        public Wizard(string name, AttackType skill)
         {
             this.Name = name;
             this.Skill = skill;
-            this.MaxHealth = 200;
+            this.MaxHealth = 100;
             this.Health = MaxHealth;
-            this.Attack = 15;
-            this.Armor = 40;
-            this.Defense = 40;
+            this.Attack = 30;
+            this.Armor = 10;
+            this.Defense = 10;
             this.Chance = 5;
             this.Level = 1;
             this.Xp = 0;
@@ -42,11 +42,11 @@ namespace RPG
         /// <returns>True or False</returns>
         public override bool LevelUpCheck()
         {
-            for (int i = 0; i < LevelUp.Length; i++)
+            for(int i = 0; i < LevelUp.Length; i++)
             {
                 if (Xp >= LevelUp[i])
                 {
-                    if (Level < LevelUp[i + 1])
+                    if (Level < LevelUp[i+1])
                     {
                         return true;
                     }
@@ -118,14 +118,14 @@ namespace RPG
                 Hit = Random.Next((int)((5 - (0.1 * Level + 1))), (int)((5 + (0.1 * Level + 1))));
                 Health -= Hit;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Warrior took {0} fire damage", Hit);
+                Console.WriteLine("Wizard took {0} fire damage", Hit);
                 Console.ForegroundColor = ConsoleColor.White;
                 InfectedTurns--;
             }
 
             if (StunTurnes > 0)
             {
-                Console.WriteLine("Warrior is Frozen");
+                Console.WriteLine("Wizard is Frozen");
                 StunTurnes--;
             }
             else
@@ -140,15 +140,15 @@ namespace RPG
         /// <param name="enemy">Which enemy we are fighting</param>
         public override void AttackDamage(Charater enemy)
         {
-            Damage = Random.Next((int)(Attack - (5 * (0.1 * Level + 1))), (int)(Attack + (5 * (0.1 * Level + 1))));
+            Damage = Random.Next((int)(Attack-(5*(0.1*Level+1))), (int)(Attack + (5 * (0.1 * Level + 1))));
             if (ChanceCheck())
             {
                 Damage *= 2;
-                Console.WriteLine("Warrior Critical Hit with {0} damage", Damage);
+                Console.WriteLine("Wizard Critical Hit with {0} damage", Damage);
             }
             else
             {
-                Console.WriteLine("Warrior Attack with {0} damage", Damage);
+                Console.WriteLine("Wizard Attack with {0} damage", Damage);
             }
 
             if (ChanceCheck())
@@ -172,7 +172,7 @@ namespace RPG
         public override void AttackDamage(Charater enemy, float damage, int turns, AttackType skill)
         {
 
-            Console.WriteLine("Warrior applied {0} for {1} turns", skill, turns);
+            Console.WriteLine("Wizard applied {0} for {1} turns", skill, turns);
 
             enemy.Defend(damage, turns, skill);
         }
@@ -214,17 +214,17 @@ namespace RPG
         /// <param name="damage">damage dealt to enemy</param>
         public override void Defend(float damage)
         {
-            Hit = Random.Next((int)(damage - (Defense + ((0.1 * Level))) / 2), (int)(damage - (Defense - ((0.1 * Level))) / 2));
-            if (Hit > 0)
+            Hit = Random.Next((int)(damage - (Defense + ((0.1 * Level)))/2), (int)(damage - (Defense - ((0.1 * Level))) / 2));
+            if(Hit > 0)
             {
                 Health -= Hit;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Warrior was hit and lost {0} health", Hit);
+                Console.WriteLine("Wizard was hit and lost {0} health", Hit);
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
-                Console.WriteLine("Warrior blocks the attack");
+                Console.WriteLine("Wizard blocks the attack");
             }
         }
 

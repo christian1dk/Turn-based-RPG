@@ -18,17 +18,25 @@ namespace RPG
         private Hero hero;
         private Layout layout = new Layout();
 
+
+        /// <summary>
+        /// Creating Player
+        /// </summary>
         public void CreatePlayer()
         {
             HeroSelect();
 
-            HeroAttackType();
+            HeroAttackSkill();
 
             HeroName();
 
             CreateHero();
         }
 
+        /// <summary>
+        /// Run Arena
+        /// </summary>
+        /// <param name="difficulty"></param>
         public void Arena(int difficulty)
         {
             arena = new Arena(hero);
@@ -37,6 +45,9 @@ namespace RPG
             PlayerMenu();
         }
 
+        /// <summary>
+        /// Player Menu
+        /// </summary>
         public void PlayerMenu()
         {
             Console.Clear();
@@ -46,12 +57,20 @@ namespace RPG
             Console.WriteLine();
             Console.WriteLine("-------------- Options -------------");
             Console.WriteLine("What do you want to do? (choose number)");
-            Console.WriteLine("1. Arena");
-            Console.WriteLine("2. Rest");
-            PlayerOption();
+            if (hero.Alive())
+            {
+                Console.WriteLine("1. Arena");
+                Console.WriteLine("2. Rest");
+                PlayerOption();
+            }
+            Console.WriteLine("1. Restart");
+            DeadOption();
             //playerSelect = Int16.Parse(Console.ReadLine());
         }
 
+        /// <summary>
+        /// Player Options
+        /// </summary>
         public void PlayerOption()
         {
             try
@@ -80,11 +99,41 @@ namespace RPG
             }
         }
 
+        /// <summary>
+        /// Dead Options
+        /// </summary>
+        public void DeadOption()
+        {
+            try
+            {
+                playerSelect = Int16.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                playerSelect = 0;
+            }
+
+            switch (playerSelect)
+            {
+                case 1:
+                    CreatePlayer();
+                    PlayerMenu();
+                    break;
+                default:
+                    Console.WriteLine("You need to choose a Option");
+                    PlayerOption();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Select Hero
+        /// </summary>
         public void HeroSelect()
         {
             //Hero select
             Console.WriteLine("What Hero do you want to play as? (choose number)");
-            Console.WriteLine("1. Wizzard");
+            Console.WriteLine("1. Wizard");
             Console.WriteLine("2. Warrior");
 
             try
@@ -97,7 +146,10 @@ namespace RPG
             }
         }      
 
-        public void HeroAttackType()
+        /// <summary>
+        /// Hero Attack Skill
+        /// </summary>
+        public void HeroAttackSkill()
         {
             //Hero AttackType
             Console.WriteLine("Whats your Heros AttackType? (choose number)");
@@ -123,7 +175,7 @@ namespace RPG
                     break;
                 default:
                     Console.WriteLine("You need to choose a Hero attackTypeSelect");
-                    HeroAttackType();
+                    HeroAttackSkill();
                     break;
             }
         }
@@ -135,12 +187,15 @@ namespace RPG
             name = Console.ReadLine();
         }
 
+        /// <summary>
+        /// Create Hero
+        /// </summary>
         public void CreateHero()
         {
             switch (heroSelect)
             {
                 case 1:
-                    hero = new Wizzard(name, attackType);
+                    hero = new Wizard(name, attackType);
                     break;
                 case 2:
                     hero = new Warrior(name, attackType);
@@ -153,6 +208,9 @@ namespace RPG
             }
         }
 
+        /// <summary>
+        /// Arena Difficulty
+        /// </summary>
         public void ArenaDifficulty()
         {
             Console.WriteLine("Difficulty? (1. Easy - 2. Normal - 3. Hard)");
