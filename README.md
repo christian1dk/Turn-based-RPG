@@ -1,5 +1,5 @@
 # About the project
-Turn based RPG where a Hero and Enemys battles in a arena.
+Turn based RPG where a Hero and Enemys battles in a arena.<br />
 Hero earns xp for winning battles, when the Hero has enough xp it will level up.
 
 main functions:
@@ -18,7 +18,8 @@ Player Option here can we:
 * Start a Arena Fight
 * Rest to get max HP
 
-    ```## This is a school project.
+## This is a school project.
+    ```
     Self-chosen project, task description: "Find a theoretical product".
     Too prove understanding of developing in OOP```
     
