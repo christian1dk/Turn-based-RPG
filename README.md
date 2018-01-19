@@ -19,7 +19,7 @@ Player Option here can we:
 * Rest to get max HP
 
 ## This is a school project.
-    ```Self-chosen project, task description: "Find a theoretical product".
+    Self-chosen project, task description: "Find a theoretical product".
     Too prove understanding of developing in OOP
     
 
