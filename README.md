@@ -18,9 +18,9 @@ Player Option here can we:
 * Start a Arena Fight
 * Rest to get max HP
 
-    `## This is a school project.
+    ```## This is a school project.
     Self-chosen project, task description: "Find a theoretical product".
-    Too prove understanding of developing in OOP`
+    Too prove understanding of developing in OOP```
     
 
 # To future developers
