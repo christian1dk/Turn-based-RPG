@@ -18,9 +18,9 @@ Player Option here can we:
 * Start a Arena Fight
 * Rest to get max HP
 
-    ## This is a school project.
+    `## This is a school project.
     Self-chosen project, task description: "Find a theoretical product".
-    Too prove understanding of developing in OOP
+    Too prove understanding of developing in OOP`
     
 
 # To future developers
@@ -29,6 +29,8 @@ Player Option here can we:
 * Creating Battleground
 * Creates Enemies
 
+-----
+
 ## Charater Class
 * Superclasses for Hero & Enemy 
 * Contains all that Enemy & Hero have has in common
@@ -36,8 +38,6 @@ Player Option here can we:
 ### Enemy Class : Charater Class
 * Superclasses for all Enemies
 * has XpReward & SkillSelect
-
------
 
 ### Hero Class : Charater Class
 * Superclasses for all Heros
