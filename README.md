@@ -3,7 +3,7 @@ Turn based RPG where a Hero and Enemys battles in a arena.<br />
 Hero earns xp for winning battles, when the Hero has enough xp it will level up.
 
 main functions:
-* Creat Hero
+* Create Hero
 * Player Options
     * Arena
     *  Rest
