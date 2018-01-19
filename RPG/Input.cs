@@ -24,6 +24,7 @@ namespace RPG
         /// </summary>
         public void CreatePlayer()
         {
+            Console.Clear();
             HeroSelect();
 
             HeroAttackSkill();

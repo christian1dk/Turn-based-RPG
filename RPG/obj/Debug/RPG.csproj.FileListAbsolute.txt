@@ -26,3 +26,10 @@ G:\+\RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
 G:\+\RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
 G:\+\RPG\RPG\obj\Debug\RPG.exe
 G:\+\RPG\RPG\obj\Debug\RPG.pdb
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\bin\Debug\RPG.exe.config
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\bin\Debug\RPG.exe
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\bin\Debug\RPG.pdb
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\obj\Debug\RPG.csprojResolveAssemblyReference.cache
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\obj\Debug\RPG.csproj.CoreCompileInputs.cache
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\obj\Debug\RPG.exe
+C:\Users\chris\Documents\Git\Turn-based-RPG\RPG\obj\Debug\RPG.pdb
